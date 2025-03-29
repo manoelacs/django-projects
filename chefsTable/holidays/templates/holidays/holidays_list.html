@@ -1,15 +1,59 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Public Holidays</title>
+    <link rel="stylesheet" href="{% static 'holidays/holidays_list.css' %}">
 </head>
 <body>
-    <h1>Public Holidays for {{ country }} </h1>
-      <p>Total number of holidays: {{ holidays|length }}</p>
-    <ul>
-        {% for holiday in holidays %}
-            <li>{{ holiday.date }}: {{ holiday.localName }}</li>
-        {% endfor %}
-    </ul>
+    <header>
+        <h1>Public Holidays for {{ country }} in {{ current_year }}</h1>
+    </header>
+    <main>
+        <!-- Highlight the Next Public Holiday -->
+        {% if upcoming_holidays %}
+            <section class="next-holiday">
+                <h2>Next Public Holiday</h2>
+                <p>
+                    <strong>{{ upcoming_holidays.0.date }}</strong>: {{ upcoming_holidays.0.localName }}
+                </p>
+            </section>
+        {% else %}
+            <p>No upcoming public holidays available.</p>
+        {% endif %}
+
+        <!-- Total Number of Holidays -->
+        <p class="holidays-info">
+            <span>Total number of holidays in: <strong>{{ upcoming_holidays|length }}</strong></span>
+            <a href="{% url 'chose_country' %}" class="back-button">Back to Choose Country</a>
+        </p>
+
+        <!-- List of Upcoming Holidays -->
+        <h2>Upcoming Public Holidays</h2>
+        <ul class="holidays-list">
+            {% for holiday in upcoming_holidays %}
+                <li>
+                    <span class="holiday-date">{{ holiday.date }}</span>
+                    <span>{{ holiday.localName }}</span>
+                </li>
+            {% endfor %}
+        </ul>
+
+        <!-- List of Past Holidays -->
+        <h2>Past Public Holidays</h2>
+        <ul class="holidays-list past-holidays">
+            {% for holiday in past_holidays %}
+                <li>
+                    <span class="holiday-date">{{ holiday.date }}</span>
+                    <span class="crossed">{{ holiday.localName }}</span>
+                </li>
+            {% endfor %}
+        </ul>
+    </main>
+    <footer>
+        <p>&copy; 2025 Public Holidays App</p>
+    </footer>
 </body>
 </html>

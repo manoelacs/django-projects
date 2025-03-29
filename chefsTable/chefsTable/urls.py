@@ -19,7 +19,8 @@ from django.urls import include, path
 from demoapp import views
 from holidays import views
 
-urlpatterns = [   
+urlpatterns = [  
+    path('', views.index, name='index'), 
     path('demo/', include('demoapp.urls')), 
     path('admin/', admin.site.urls), 
     path('holidays/', include('holidays.urls')),

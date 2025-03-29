@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Public Holidays</title>
+</head>
+<body>
+    <h1>Public Holidays for {{ country }} </h1>
+      <p>Total number of holidays: {{ holidays|length }}</p>
+    <ul>
+        {% for holiday in holidays %}
+            <li>{{ holiday.date }}: {{ holiday.localName }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

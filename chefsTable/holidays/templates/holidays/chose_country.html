@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Choose Country</title>
+    <style>
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 200px;
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+        .dropdown-content div {
+            padding: 10px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+        }
+        .dropdown-content div:hover {
+            background-color: #f1f1f1;
+        }
+        .flag {
+            width: 20px;
+            height: 15px;
+            margin-right: 10px;
+        }
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <h1>Select a Country</h1>
+    <form id="countryForm" method="GET" action="{% url 'get_holidays' %}">
+        <label for="country">Country:</label>
+        <select name="country" id="country" required>
+            <option value="BR">
+                <img class="flag" src="https://flagcdn.com/w40/br.png" alt="Brazil Flag"> Brazil
+            </option>
+            <option value="AL">
+                <img class="flag" src="https://flagcdn.com/w40/al.png" alt="Albania Flag"> Albania
+            </option>
+            <option value="PT">
+                <img class="flag" src="https://flagcdn.com/w40/pt.png" alt="Portugal Flag"> Portugal
+            </option>
+            <option value="AU">
+                <img class="flag" src="https://flagcdn.com/w40/au.png" alt="Australia Flag"> Australia
+            </option>
+        </select>
+        <button type="submit">Get Public Holidays</button>
+    </form>
+</body>
+</html>

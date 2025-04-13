@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'demo/styles.css' %}">
+    <title>{% block title %}Chef's Table{% endblock %}</title>
+</head>
+<body>
+    <header>
+        <h1>Chef's Table {{title}}</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="{% url 'home' %}">Home</a></li>
+            <li><a href="{% url 'about' %}">About</a></li>
+            <li><a href="{% url 'menu' %}">Menu</a></li>
+            <li><a href="{% url 'contact' %}">Contact</a></li>
+        </ul>
+    </nav>
+    <main>
+        {% block content %}
+        <!-- Page-specific content will go here -->
+        {% endblock %}
+    </main>
+    <footer>
+        <p>&copy;</p>
+        <script>
+            const yearElement = document.querySelector('footer p');
+            const currentYear = new Date().getFullYear();
+            yearElement.innerHTML = `&copy; ${currentYear} Chef's Table. All rights reserved.`;
+        </script>
+    </footer>
+</body>
+</html>

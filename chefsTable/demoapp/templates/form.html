@@ -1,0 +1,10 @@
+<p>Hello</p>
+<p>Welcome to the Chef's Table demo app!</p>
+<p>Here you can create, update, and delete chefs.</p>
+<p>Use the form below to add a new chef.</p>
+
+<form method="POST" action="{% url 'model_form_view' %}">
+    {% csrf_token %}
+    {{ form.as_p }} 
+    <button type="submit">Submit</button>
+</form>

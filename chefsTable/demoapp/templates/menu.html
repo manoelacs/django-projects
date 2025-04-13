@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Drink Choice</title>
+</head>
+    <body>
+        <h1>Menu</h1>
+        {% if menu %}
+            <ul>
+            {% for key, values in menu.items %}
+                <li>{{key}}</li>
+                <ul>
+                    {% for value in values %}
+                        <li>{{ value.drink }}</li>
+                         <li>Price: {{ value.price }}</li>
+                       
+                    {% endfor %}
+            {% endfor %}
+            </ul>
+        {% else %}
+            <p>No menu items available.</p>
+        {% endif %}
+
+    </body>
+</html>

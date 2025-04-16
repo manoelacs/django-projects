@@ -29,11 +29,11 @@ class Person(models.Model):
     shift = models.IntegerField()
 
     def __str__(self): 
-        return f"{self.last_name}, {self.first_name} - {self.role}" """
+        return f"{self.last_name}, {self.first_name} - {self.role}"	 """
 
-""" class Employee(models.Model):   
+class Employee(models.Model):   
     name = models.CharField(max_length=100)   
     email = models.EmailField()   
     contact = models.CharField(max_length=15, null=True)
     class Meta:   
-        db_table = "Employee"  """
+        db_table = "Employee" 

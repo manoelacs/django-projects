@@ -2,16 +2,16 @@ from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin 
 from django.contrib.auth.models import User 
 
-from .models import  DrinksCategory, Drinks, Logger, Person 
+from .models import  DrinksCategory, Drinks, Employee, Logger, Person 
 # Unregister the provided model admin:  
 
 admin.site.register(DrinksCategory)
 admin.site.register(Drinks)
 admin.site.register(Logger)
 
-""" admin.site.register(Employee) """
+admin.site.register(Employee) 
 
-# admin.site.unregister(User)
+
 admin.site.unregister(User) 
 @admin.register(User) 
 class NewAdmin(UserAdmin): 

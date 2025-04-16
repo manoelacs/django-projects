@@ -2,9 +2,10 @@ from django.shortcuts import render # type: ignore
 from django.http import HttpResponse  # type: ignore
 from demoapp.forms import InputForms  # type: ignore
 from demoapp.forms import LoggerForm  # type: ignore
-from demoapp.models import Drinks, DrinksCategory  # Ensure you have a MenuItem model in your app
+from demoapp.models import Drinks, DrinksCategory, Employee  # Ensure you have a MenuItem model in your app
 from django.views.generic.list import ListView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.views.generic.detail import DetailView
 
 
 def index(request):     
@@ -67,7 +68,7 @@ def menu(request):
     return render(request, 'menu.html', context)
 
 def about(request):
-    return render(request, 'about.html', {'title': 'About Us'})
+    return render(request, 'demoapp/about.html', {'title': 'About Us'})
 
 def contact(request):
     return render(request, 'contact.html', {'title': 'Contact Us'})
@@ -75,13 +76,11 @@ def contact(request):
 def home(request):
     return render(request, 'home.html', {'title': 'Home'})
 
-""" class EmployeeCreate(CreateView):   
+class EmployeeCreate(CreateView):   
     model = Employee   
     fields = '__all__' 
-    success_url = "/employees/success/" 
-
-
-
+   
+    success_url = "/employees/success/"
 class EmployeeList(ListView):   
     model = Employee
     success_url = "/employees/success/"
@@ -90,7 +89,11 @@ class EmployeeUpdate(UpdateView):
     model = Employee
     fields = '__all__'   
     success_url = "/employees/success/" 
+class EmployeeDetail(DetailView):   
+    model = Employee
+    fields = '__all__'   
+    success_url = "/employees/success/" 
 
 class EmployeeDelete(DeleteView):   
     model = Employee  
-    success_url = "/employees/success/"  """
+    success_url = "/employees/success/"  
